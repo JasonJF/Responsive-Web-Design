@@ -1,7 +1,9 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: hsl(185, 18%, 26%);;
+    background-color: hsl(185, 18%, 26%);
+    ;
 }
+
 .pageWrapper {
     display: flex;
     background-color: hsl(185, 18%, 26%);
@@ -26,6 +28,7 @@ header {
     justify-self: start;
     margin-left: 5em;
 }
+
 .myNav {
     width: 100vw;
     display: grid;
@@ -50,6 +53,7 @@ header {
     height: auto;
     grid-template-rows: 1fr 2fr 2fr 1fr;
 }
+
 .contentCard {
 
     display: flex;
@@ -58,16 +62,15 @@ header {
     justify-content: center;
 
 }
+
 #video {
     width: 600px;
     height: 360px;
 }
-.benefits {
-   
-}
-.contact {
-    
-}
+
+.benefits {}
+
+.contact {}
 
 .contactForm {
     justify-content: center;
@@ -76,19 +79,20 @@ header {
 a {
     color: white;
     text-decoration: none;
-  }
+}
 
 p {
     font-size: x-large;
 }
 
-@media (max-width: 500px) { 
+@media (max-width: 500px) {
     .logo {
         display: flex;
         justify-content: center;
         align-content: center;
         margin-left: 1em;
     }
+
     .myNav {
         width: 100vw;
         display: flex;
@@ -97,8 +101,8 @@ p {
         justify-content: center;
         grid-template-rows: 60% 40%;
         padding-bottom: 1em;
-    } 
-    
+    }
+
     .myNavBtns {
         display: flex;
         flex-direction: column;
