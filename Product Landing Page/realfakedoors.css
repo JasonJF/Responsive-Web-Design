@@ -1,0 +1,122 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: hsl(185, 18%, 26%);;
+}
+.pageWrapper {
+    display: flex;
+    background-color: hsl(185, 18%, 26%);
+    justify-content: center;
+}
+
+
+
+header {
+    display: flex;
+    position: fixed;
+    top: 0;
+    align-items: center;
+    justify-content: stretch;
+    background-color: hsl(188, 20%, 8%);
+    min-height: 60px;
+    width: 100vw;
+    color: white;
+}
+
+.logo {
+    justify-self: start;
+    margin-left: 5em;
+}
+.myNav {
+    width: 100vw;
+    display: grid;
+    align-self: center;
+    /* justify-content: space-between; */
+    grid-template-columns: 60% 40%;
+}
+
+.myNavBtns {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mainContent {
+    color: white;
+    background-color: hsl(185, 18%, 26%);
+    display: grid;
+    justify-self: center;
+    justify-items: center;
+    width: 80vw;
+    height: auto;
+    grid-template-rows: 1fr 2fr 2fr 1fr;
+}
+.contentCard {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+#video {
+    width: 600px;
+    height: 360px;
+}
+.benefits {
+   
+}
+.contact {
+    
+}
+
+.contactForm {
+    justify-content: center;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+  }
+
+p {
+    font-size: x-large;
+}
+
+@media (max-width: 500px) { 
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        margin-left: 1em;
+    }
+    .myNav {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        justify-content: center;
+        grid-template-rows: 60% 40%;
+        padding-bottom: 1em;
+    } 
+    
+    .myNavBtns {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+
+    }
+
+    .mainContent {
+        grid-template-rows: 250px auto auto auto;
+    }
+
+    #video {
+        width: 300px;
+        height: 150px;
+    }
+
+    p {
+        font-size: medium;
+    }
+}
