@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Cookbook</title>
+    <link rel="stylesheet" href="styles/techdoc.css">
+</head>
+
+<body>
+    <div id="pageWrapper" class="pageWrapper">
+        <nav id="navbar" class="navbar">
+            <header id="navHeader" class="navheader">Python Cookbook Chapter 1</header>
+            <div class="sideButton">
+                <a class="nav-link" href="#Unpacking_a_Sequence_into_Separate_Variables">Unpacking a Sequence into Separate Variables</a>           
+            </div>
+            <div class="sideButton">
+                <a class="nav-link" href="#Unpacking_Elements_from_Iterables_of_Arbitrary_Length">Unpacking Elements from Iterables of Arbitrary Length</a>           
+            </div>
+            <div class="sideButton">
+                <a class="nav-link" href="#Keeping_the_last_N_Items">Keeping the last N Items</a>           
+            </div>
+            <div class="sideButton">
+                <a class="nav-link" href="#Finding_the_Largest_or_Smallest_N_Items:">Finding the Largest or Smallest N Items:</a>           
+            </div>
+            <div class="sideButton">
+                <a class="nav-link" href="#Implementing_a_Priority_Queue">Implementing a Priority Queue</a>           
+            </div>
+            <div class="sideButton">
+                <a class="nav-link" href="#Mapping_Keys_to_Multiple_Values_in_a_Dictionary">Mapping Keys to Multiple Values in a Dictionary</a>           
+            </div>
+            <div class="sideButton">
+                <a class="nav-link" href="#Keeping_Dictionaries_in_Order">Keeping Dictionaries in Order</a>           
+            </div>
+            <div class="sideButton">
+                <a class="nav-link" href="#Calculating_with_Dictionaries">Calculating with Dictionaries</a>           
+            </div>
+            <div class="sideButton">
+                <a class="nav-link" href="#Finding_Commonalities_in_Two_Dictionaries">Finding Commonalities in Two Dictionaries</a>           
+            </div>
+            <div class="sideButton">
+                <a class="nav-link" href="#Removing_Duplicates_from_a_Sequence_while_Maintaining_Order">Removing Duplicates from a Sequence while Maintaining Order</a>           
+            </div>          
+                        
+        </nav>
+
+        <div id="main-doc" class="mainDoc">
+            <section id="Unpacking_a_Sequence_into_Separate_Variables" class="main-section">
+                <header>Unpacking a Sequence into Separate Variables</header>
+                <article>
+                    <p>
+                        <h3>Problem</h3>
+                        You have an N-element tuple or sequence that you would like to unpack into a collection
+                        of N variables.
+                    </p>
+                    <p>
+                        <h3>Solution</h3>
+                        Any sequence (or iterable) can be unpacked into variables using a simple assignment
+                        operation. The only requirement is that the number of variables and structure match
+                        the sequence. For example:
+                    </p>
+                    <code>
+                        >>> p = (4, 5)
+                        >>> x, y = p
+                        >>> x
+                        4
+                        >>> y
+                        5
+                        >>>
+                        >>> data = [ 'ACME', 50, 91.1, (2012, 12, 21) ]
+                        >>> name, shares, price, date = data
+                        >>> name
+                        'ACME'
+                        >>> date
+                        (2012, 12, 21)
+                        >>> name, shares, price, (year, mon, day) = data
+                        >>> name
+                        'ACME'
+                        >>> year
+                        2012
+                        >>> mon
+                        12
+                        >>> day
+                        21
+                        >>>
+                    </code>
+                </article>
+            </section>
+            <section class="main-section" id="Unpacking_Elements_from_Iterables_of_Arbitrary_Length">
+                <header>Unpacking Elements from Iterables of Arbitrary Length</header>
+                <article>
+                    <p>
+                        <h3>Problem</h3>
+                        You need to unpack N elements from an iterable, but the iterable may be longer than N
+                        elements, causing a “too many values to unpack” exception.
+
+                    </p>
+                    <p>
+                        <h3>Solution</h3>
+                        Python “star expressions” can be used to address this problem. For example, suppose
+                        you run a course and decide at the end of the semester that you’re going to drop the first
+                        and last homework grades, and only average the rest of them. If there are only four
+                        assignments, maybe you simply unpack all four, but what if there are 24? A star expression
+                        makes it easy:
+
+                    </p>
+                    <code>
+                        def drop_first_last(grades):
+                        first, *middle, last = grades
+                        return avg(middle)
+                    </code>
+                    <p>
+                        As another use case, suppose you have user records that consist of a name and email
+                        address, followed by an arbitrary number of phone numbers. You could unpack the
+                        records like this:
+
+                    </p>
+                    <code>
+                        >>> record = ('Dave', 'dave@example.com', '773-555-1212', '847-555-1212')
+                        >>> name, email, *phone_numbers = user_record
+                        >>> name
+                        'Dave'
+                        >>> email
+                        'dave@example.com'
+                        >>> phone_numbers
+                        ['773-555-1212', '847-555-1212']
+                        >>>
+
+                    </code>
+                </article>
+            </section>
+            <section class="main-section" id="Keeping_the_last_N_Items">
+                <header>Keeping the last N Items</header>
+                <article>
+                    <p>
+                        <h3>Problem</h3>
+                        You want to keep a limited history of the last few items seen during iteration or during
+                        some other kind of processing.
+
+
+                    </p>
+                    <p>
+                        <h3>Solution</h3>
+                        Keeping a limited history is a perfect use for a collections.deque. For example, the
+                        following code performs a simple text match on a sequence of lines and yields the
+                        matching line along with the previous N lines of context when found:
+
+
+
+                    </p>
+                    <code>
+                        from collections import deque
+                        def search(lines, pattern, history=5):
+                        previous_lines = deque(maxlen=history)
+                        for line in lines:
+                        if pattern in line:
+                        yield line, previous_lines
+                        previous_lines.append(line)
+                        # Example use on a file
+                        if __name__ == '__main__':
+                        with open('somefile.txt') as f:
+                        for line, prevlines in search(f, 'python', 5):
+                        for pline in prevlines:
+                        print(pline, end='')
+                        print(line, end='')
+                        print('-'*20
+
+                    </code>
+                </article>
+            </section>
+
+            <section class="main-section" id="Finding_the_Largest_or_Smallest_N_Items:">
+                <header>Finding the Largest or Smallest N Items:</header>
+                <article>
+                    <p>
+                        <h3>Problem</h3>
+                        You want to make a list of the largest or smallest N items in a collection.
+
+                    </p>
+                    <p>
+                        <h3>Solution</h3>
+                        The heapq module has two functions—nlargest() and nsmallest()—that do exactly
+                        what you want. For example:
+
+
+
+                    </p>
+                    <code>
+                        import heapq
+                        nums = [1, 8, 2, 23, 7, -4, 18, 23, 42, 37, 2]
+                        print(heapq.nlargest(3, nums)) # Prints [42, 37, 23]
+                        print(heapq.nsmallest(3, nums)) # Prints [-4, 1, 2]
+
+                    </code>
+                </article>
+            </section>
+
+            <section class="main-section" id="Implementing_a_Priority_Queue">
+                <header>Implementing a Priority Queue</header>
+                <article>
+                    <p>
+                        <h3>Problem</h3>
+                        You want to implement a queue that sorts items by a given priority and always returns
+                        the item with the highest priority on each pop operation.
+
+
+                    </p>
+                    <p>
+                        <h3>Solution</h3>
+                        The following class uses the heapq module to implement a simple priority queue:
+
+
+                    </p>
+                    <code>
+                        import heapq
+                        class PriorityQueue:
+                        def __init__(self):
+                        self._queue = []
+                        self._index = 0
+                        def push(self, item, priority):
+                        heapq.heappush(self._queue, (-priority, self._index, item))
+                        self._index += 1
+                        def pop(self):
+                        return heapq.heappop(self._queue)[-1]
+
+                    </code>
+                </article>
+            </section>
+
+            <section class="main-section" id="Mapping_Keys_to_Multiple_Values_in_a_Dictionary">
+                <header>Mapping Keys to Multiple Values in a Dictionary</header>
+                <article>
+                    <p>
+                        <h3>Problem</h3>
+                        You want to make a dictionary that maps keys to more than one value (a so-called
+                        “multidict”).
+
+
+                    </p>
+                    <p>
+                        <h3>Solution</h3>
+                        A dictionary is a mapping where each key is mapped to a single value. If you want to
+                        map keys to multiple values, you need to store the multiple values in another container
+                        such as a list or set. For example, you might make dictionaries like this:
+
+
+                    </p>
+                    <code>
+                        d = {
+                        'a' : [1, 2, 3],
+                        'b' : [4, 5]
+                        }
+                        e = {
+                        'a' : {1, 2, 3},
+                        'b' : {4, 5}
+                        }
+
+                    </code>
+                </article>
+            </section>
+
+            <section class="main-section" id="Keeping_Dictionaries_in_Order">
+                <header>Keeping Dictionaries in Order</header>
+                <article>
+                    <p>
+                        <h3>Problem</h3>
+                        You want to create a dictionary, and you also want to control the order of items when
+                        iterating or serializing.
+
+
+                    </p>
+                    <p>
+                        <h3>Solution</h3>
+                        To control the order of items in a dictionary, you can use an OrderedDict from the
+                        collections module. It exactly preserves the original insertion order of data when
+                        iterating. For example:
+
+
+
+                    </p>
+                    <code>
+                        from collections import OrderedDict
+                        d = OrderedDict()
+                        d['foo'] = 1
+                        d['bar'] = 2
+                        d['spam'] = 3
+                        d['grok'] = 4
+                        # Outputs "foo 1", "bar 2", "spam 3", "grok 4"
+                        for key in d:
+                        print(key, d[key])
+
+                    </code>
+                </article>
+            </section>
+
+            <section class="main-section" id="Calculating_with_Dictionaries">
+                <header>Calculating with Dictionaries</header>
+                <article>
+                    <p>
+                        <h3>Problem</h3>
+                        You want to perform various calculations (e.g., minimum value, maximum value, sorting,
+                        etc.) on a dictionary of data.
+
+
+                    </p>
+                    <p>
+                        <h3>Solution</h3>
+                        Consider a dictionary that maps stock names to prices:
+                        <code>
+                            prices = {
+                            'ACME': 45.23,
+                            'AAPL': 612.78,
+                            'IBM': 205.55,
+                            'HPQ': 37.20,
+                            'FB': 10.75
+                            }
+
+                        </code>
+                        <p>In order to perform useful calculations on the dictionary contents, it is often useful to
+                            invert the keys and values of the dictionary using zip(). For example, here is how to
+                            find the minimum and maximum price and stock name:</p>
+                        <code>
+                            min_price = min(zip(prices.values(), prices.keys()))
+                            # min_price is (10.75, 'FB')
+                            max_price = max(zip(prices.values(), prices.keys()))
+                            # max_price is (612.78, 'AAPL')
+
+                        </code>
+                        <p>Similarly, to rank the data, use zip() with sorted(), as in the following:
+                        </p>
+                        <code>
+                            prices_sorted = sorted(zip(prices.values(), prices.keys()))
+                            # prices_sorted is [(10.75, 'FB'), (37.2, 'HPQ'),
+                            # (45.23, 'ACME'), (205.55, 'IBM'),
+                            # (612.78, 'AAPL')]
+
+                        </code>
+                </article>
+            </section>
+
+            <section class="main-section" id="Finding_Commonalities_in_Two_Dictionaries">
+                <header>Finding Commonalities in Two Dictionaries</header>
+                <article>
+                    <p>
+                        <h3>Problem</h3>
+                        You have two dictionaries and want to find out what they might have in common (same
+                        keys, same values, etc.).
+
+
+                    </p>
+                    <p>
+                        <h3>Solution</h3>
+                        Consider two dictionaries:
+
+                    </p>
+                    <code>
+                        a = {
+                        'x' : 1,
+                        'y' : 2,
+                        'z' : 3
+                        }
+                        b = {
+                        'w' : 10,
+                        'x' : 11,
+                        'y' : 2
+                        }
+
+                    </code>
+                    <p>
+                        To find out what the two dictionaries have in common, simply perform common set
+                        operations using the keys() or items() methods. For example:
+                    </p>
+                    <code>
+                        # Find keys in common
+                        a.keys() & b.keys() # { 'x', 'y' }
+                        # Find keys in a that are not in b
+                        a.keys() - b.keys() # { 'z' }
+                        # Find (key,value) pairs in common
+                        a.items() & b.items() # { ('y', 2) }
+
+                    </code>
+
+
+                </article>
+            </section>
+
+            <section class="main-section" id="Removing_Duplicates_from_a_Sequence_while_Maintaining_Order">
+                <header>Removing Duplicates from a Sequence while Maintaining Order</header>
+                <article>
+                    <p>
+                        <h3>Problem</h3>
+                        You want to eliminate the duplicate values in a sequence, but preserve the order of the
+                        remaining items
+
+
+                    </p>
+                    <p>
+                        <h3>Solution</h3>
+                        If the values in the sequence are hashable, the problem can be easily solved using a set
+                        and a generator. For example:
+
+
+
+                    </p>
+                    <code>
+                        def dedupe(items):
+                        seen = set()
+                        for item in items:
+                        if item not in seen:
+                        yield item
+                        seen.add(item)
+
+                    </code>
+                    <p>
+                        Here is an example of how to use your function:
+                    </p>
+                    <code>
+                        >>> a = [1, 5, 2, 1, 9, 1, 5, 10]
+                        >>> list(dedupe(a))
+                        [1, 5, 2, 9, 10]
+                        >>>
+
+                    </code>
+                </article>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>
