@@ -7,6 +7,8 @@ body, html {
     font-family: -webkit-pictograph;
     background-color: #3B509C;
 }
+
+
 .navbar {
     display: flex;
     flex-direction: column;
@@ -19,9 +21,9 @@ body, html {
     font-family: -webkit-pictograph;
     color: white;
     /* background-color: #283669; */
-   
-    /* background-color: red; */
 }
+
+
 .navheader{
     font-size: x-large;
 }
@@ -66,3 +68,20 @@ code {
     background: #284E78;
     border-radius: 5px;   
   }
+
+  @media (max-width: 500px) {
+
+    .navbar {
+      display: none;  
+    }
+
+    .mainDoc {
+        left: 0px;
+        width: auto;
+        border: none;
+    }
+
+    header {
+        font-size: large;
+    }
+}
