@@ -1,0 +1,46 @@
+body {
+    background-color: slategray;
+}
+.navBar {
+    height: 10vh;
+    width: 100%;
+    background-color: violet;
+}
+.pageWrapper{
+    display: flex;
+    flex-direction: column;
+    height: 200vh;
+}
+.upperPage {
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.imageSection {
+    height: 90vh;
+    background-color: teal;
+}
+
+.infoSection {
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    /* position: absolute; */
+}
+.aboutSection {
+    background-color: thistle;
+    flex: 1;
+}
+
+.gridSection {
+    background-color: whitesmoke;
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+.infoBox {
+    background-color: blue;
+    height: 30vh;
+    border: solid 2px gold;
+    border-radius: 5px;
+}
