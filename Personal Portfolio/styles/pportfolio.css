@@ -1,5 +1,6 @@
 body {
     background-color: slategray;
+    font-family: Arial, Helvetica, sans-serif;
 }
 .navBar {
     height: 10vh;
@@ -28,19 +29,25 @@ body {
     /* position: absolute; */
 }
 .aboutSection {
-    background-color: thistle;
+    display: block;
+    background-color: rgb(58, 49, 58);
     flex: 1;
+    text-align: center;
+    color: white;
 }
 
 .gridSection {
-    background-color: whitesmoke;
+    /* background-color: whitesmoke; */
     display: grid;
     grid-template-columns: auto auto auto;
 }
 
 .infoBox {
-    background-color: blue;
+    background-color: rgb(58, 49, 58);
+    color: white;
+    text-align: center;
     height: 30vh;
     border: solid 2px gold;
     border-radius: 5px;
+    margin: 1.5em;
 }
