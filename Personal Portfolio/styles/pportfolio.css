@@ -2,10 +2,22 @@ body {
     background-color: slategray;
     font-family: Arial, Helvetica, sans-serif;
 }
+ul {
+    text-align: left;
+}
 .navBar {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    align-content: center;
     height: 10vh;
     width: 100%;
-    background-color: violet;
+    background-color: rgb(41, 34, 41);
+}
+
+.navLinks {
+    display: flex;
+    justify-content: space-around;
+    color: white;
 }
 .pageWrapper{
     display: flex;
@@ -29,17 +41,23 @@ body {
     /* position: absolute; */
 }
 .aboutSection {
-    display: block;
+    display: flex;
     background-color: rgb(58, 49, 58);
     flex: 1;
     text-align: center;
+    justify-content: center;
     color: white;
 }
-
+#aboutText {
+    align-self: center;
+    font-size: 2em;
+}
 .gridSection {
     /* background-color: whitesmoke; */
     display: grid;
+    justify-content: space-evenly;
     grid-template-columns: auto auto auto;
+    background-color: rgb(58, 49, 58);
 }
 
 .infoBox {
@@ -47,7 +65,40 @@ body {
     color: white;
     text-align: center;
     height: 30vh;
+    width: 14em;
     border: solid 2px gold;
     border-radius: 5px;
     margin: 1.5em;
 }
+
+/*typing demo, taken from https://codepen.io/denic/pen/GRoOxbM*/
+
+.wrapper {
+    height: 100vh;
+    /*This part is important for centering*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .typing-demo {
+    width: 22ch;
+    animation: typing 2s steps(22), blink .5s step-end infinite alternate;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid;
+    font-family: monospace;
+    font-size: 2em;
+  }
+  
+  @keyframes typing {
+    from {
+      width: 0
+    }
+  }
+      
+  @keyframes blink {
+    50% {
+      border-color: transparent
+    }
+  }
