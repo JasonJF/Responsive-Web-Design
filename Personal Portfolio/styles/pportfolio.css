@@ -22,7 +22,7 @@ ul {
 .pageWrapper{
     display: flex;
     flex-direction: column;
-    height: 200vh;
+    height: 300vh;
 }
 .upperPage {
     display: grid;
@@ -110,7 +110,8 @@ ul {
     background-image: url("https://github.com/JasonJF/Responsive-Web-Design/blob/master/Personal%20Portfolio/images/blue_boy_typing_nothought.gif?raw=true");
   
     /* Set a specific height */
-    min-height: 500px; 
+    min-height: 500px;
+    max-width: 99vw; 
   
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
@@ -122,11 +123,21 @@ ul {
       position: relative;
       height: 100vh;
       width: 100vw;
-      background-color: rgba(0, 128, 0, 0.096);
+      background-color: rgba(0, 128, 0, 0.308);
   }
   .lowerPage {
     position: relative;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(0, 128, 0, 0.096);
+    /* background-color: rgba(0, 128, 0, 0.096); */
+    background-color: rgb(58, 49, 58);
+    }
+
+.workText {
+    color: white;
+    font-size: 4em;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    margin-top: 1em;
 }
