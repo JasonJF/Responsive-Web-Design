@@ -57,7 +57,7 @@ ul {
 .gridSection {
     /* background-color: whitesmoke; */
     display: grid;
-    justify-content: space-evenly;
+    justify-content: center;
     grid-template-columns: auto auto auto;
     background-color: rgb(58, 49, 58);
 }
@@ -70,7 +70,7 @@ ul {
     width: 14em;
     border: solid 3px gold;
     border-radius: 5px;
-    margin: 1.5em;
+    margin: 2.5em;
 }
 
 /*typing demo, taken from https://codepen.io/denic/pen/GRoOxbM*/
@@ -121,7 +121,7 @@ ul {
   }
   .window {
       position: relative;
-      height: 100vh;
+      height: 75vh;
       width: 100vw;
       background-color: rgba(0, 128, 0, 0.308);
   }
@@ -140,4 +140,19 @@ ul {
     display: flex;
     justify-content: center;
     margin-top: 1em;
+}
+.contactWindow {
+    display: flex;
+    height: 25vh;
+    color: white;
+    font-size: 4em;
+    background-color: rgb(41, 34, 41);
+}
+
+.workGrid {
+    /* background-color: whitesmoke; */
+    display: grid;
+    justify-content: center;
+    grid-template-columns: auto auto auto;
+    background-color: rgb(58, 49, 58);
 }
