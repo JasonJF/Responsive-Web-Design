@@ -72,6 +72,16 @@ ul {
     border-radius: 5px;
     margin: 2.5em;
 }
+.workBox {
+    background-color: rgb(58, 49, 58);
+    color: white;
+    text-align: center;
+    height: 25em;
+    width: 20em;
+    border: solid 3px green;
+    /* border-radius: 5px; */
+    margin: 2.5em;
+}
 
 /*typing demo, taken from https://codepen.io/denic/pen/GRoOxbM*/
 
@@ -141,6 +151,10 @@ ul {
     justify-content: center;
     margin-top: 1em;
 }
+.lowerPageGrid {
+    display: grid;
+    grid-template-rows: 20% 80%;
+}
 .contactWindow {
     display: flex;
     height: 25vh;
@@ -153,6 +167,7 @@ ul {
     /* background-color: whitesmoke; */
     display: grid;
     justify-content: center;
+    align-content: space-around;
     grid-template-columns: auto auto auto;
     background-color: rgb(58, 49, 58);
 }
