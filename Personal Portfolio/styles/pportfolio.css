@@ -159,11 +159,30 @@ ul {
     grid-template-rows: 20% 80%;
 }
 .contactWindow {
-    display: flex;
+    display: grid;
+    grid-template-rows: 20% 80%;
     height: 25vh;
-    color: white;
-    font-size: 4em;
     background-color: rgb(41, 34, 41);
+}
+.contactLogoContainer {
+    display: flex;
+    color: white;
+    font-size: 2em;
+    font-family: monospace;
+    justify-content: center;
+}
+.contactText{
+    display: flex;
+    color: white;
+    font-size: 2em;
+    font-family: monospace;
+    justify-content: center;
+    padding: 10px; 
+}
+.contactLogo {
+    height: 50px;
+    width: 50px;
+    padding: 20px;
 }
 
 .workGrid {
