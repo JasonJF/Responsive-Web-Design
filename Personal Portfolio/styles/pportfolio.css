@@ -7,17 +7,36 @@ ul {
 }
 .navBar {
     display: grid;
+    position: fixed;
+    top: 0;
     grid-template-columns: 60% 40%;
     align-content: center;
     height: 10vh;
-    width: 100%;
+    width: 99%;
     background-color: rgb(41, 34, 41);
+    box-shadow: 0px 5px 9px 1px rgba(0,0,0,0.75);
+    z-index: 1;
 }
-
+#logo {
+    max-height: 10vh;
+}
 .navLinks {
     display: flex;
     justify-content: space-around;
     color: white;
+    align-self: center;
+}
+
+#navBar a {
+    color: white;
+  }
+  #navBar a :visited {
+    color: white;
+  }
+  a:-webkit-any-link {
+    color: white;
+    cursor: pointer;
+    text-decoration: underline;
 }
 .pageWrapper{
     display: flex;
@@ -26,6 +45,8 @@ ul {
 }
 .upperPage {
     display: grid;
+    z-index: 0;
+    /* height: 100vh; */
     /* grid-template-columns: 30% 70%; */
 }
 
@@ -39,7 +60,7 @@ ul {
 .infoSection {
     display: flex;
     flex-direction: column;
-    height: 90vh;
+    height: 100vh;
     /* position: absolute; */
 }
 .aboutSection {

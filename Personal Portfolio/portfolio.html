@@ -9,18 +9,18 @@
 </head>
 <body>
     <div class="pageWrapper parallax">
-        <div class="navBar">
-            <div class="navLogo"></div>
+        <div class="navBar" id="navbar">
+            <div class="navLogo"><img id="logo" src="images/love2code.png"></div>
             <div class="navLinks">
-                <a id="welcome">Welcome</a>
-                <a id="projects">Projects</a>
-                <a id="Contact">Contact</a>
+                <a id="welcome" href="#welcome-section">Welcome</a>
+                <a id="projects" href="#projects1">Projects</a>
+                <a id="Contact" href="#contact">Contact</a>
             </div>
         </div>
         <div class="upperPage">
            <!-- <div class="imageSection"><img id="typingBoy" src="images/blue_boy_typing_nothought.gif"></div>-->
             <div class="infoSection">
-                <div class="aboutSection wrapper"><div class="typing-demo" id="aboutText">Hi, my name is Jason.</div></div>
+                <div id="welcome-section" class="aboutSection wrapper"><h1 class="typing-demo" id="aboutText">Hi, my name is Jason.</h1></div>
                 <div class="gridSection">
                     <div class="infoBox" id="infoBox1"><p>EDUCATION</p><ul>
                         <li>Btech Electrical Eng. (Computer Systems Stream)</li>
@@ -46,17 +46,17 @@
         </div>
       <div class="window"></div>
         
-        <div class="lowerPage lowerPageGrid"><div class="workText">Here is some of my work</div>
-        <div class="workGrid">
-            <div class="workBlock workBox" id="job1"><img class="workImg" src="images/product_sml.png"></div>
-            <div class="workBlock workBox" id="job2"><img class="workImg" src="images/survey_sml.png"></div>
-            <div class="workBlock workBox" id="job3"><img class="workImg" src="images/tribute_sml.png"></div>
+        <div class="lowerPage lowerPageGrid"><h3 class="workText" id="projects1">Here is some of my work</h3>
+        <div class="workGrid" id="projects">
+            <a href="https://codepen.io/jasonjf/pen/oNBarqN" class="project-tile workBox" id="job1"><img class="workImg" src="images/product_sml.png"></a>
+            <a href="https://codepen.io/jasonjf/pen/xNEYVX" class="project-tile workBox" id="job2"><img class="workImg" src="images/survey_sml.png"></a>
+            <a href="https://codepen.io/jasonjf/pen/mgNQNR" class="project-tile workBox" id="job3"><img class="workImg" src="images/tribute_sml.png"></a>
         </div>
     </div>
-        <div class="contactWindow"><div class="contactText">Get in touch with me</div>
+        <div class="contactWindow"><div class="contactText" id="contact">Get in touch with me</div>
         <div class="contactLogoContainer">
             <img class="contactLogo" src="images/gmail.png">
-            <img class="contactLogo" src="images/github.png">
+            <a href="https://github.com/JasonJF" id="profile-link"><img class="contactLogo" src="images/github.png"></a>
         </div>
         </div>
     </div>
